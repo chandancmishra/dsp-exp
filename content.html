@@ -1,0 +1,266 @@
+<!-- This file needs to be edited by the lab developer to suit the requirements of their lab in particular.-->
+<!-- Add class="default" to include any element as it is specified in default.html. Do not include class="default" to the elements that you want to edit -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Digital signal processing Lab </title>
+        <script src="a3.js"></script>
+    </head>
+
+    <body>
+        <div id="experiment">
+            <!-- The Experiment Document Container-->
+            <!-- The lab Header contains the logo and the name of the lab, usually displayed on the top of the page-->
+
+            <header class="default" id="experiment-header">
+                <div class="logo" id="experiment-header-logo">
+                    <!-- Enclose the logo image of your lab or write it in text-->
+                    <img src="../images/logo.jpg"></div>
+
+                <div class="heading" id="experiment-header-heading">
+                    <!-- Write the name of your lab and link it to the home 
+          page of your lab (h1 tag is preferred while writing your 
+          lab name)-->
+                    <a href="../index.html">Digital signal processing Lab</a>
+                </div><!-- Add any additional element you want to add to the lab 
+        header, For example : Help (Enclosing them with suitable 
+        div is recommended)-->
+            </header><!-- The lab article is the main content area where all the experiment content sits-->
+
+            <article id="experiment-article">
+                <!-- The lab article has an header, optional navigational 
+        menu, number of sections, an optional sidebar and a closing 
+        footer-->
+
+                <div class="breadcrumb" id="experiment-article-breadcrumb"></div>
+
+                <header class="heading" id="experiment-article-heading">
+                    Study of different types of Companding Techniques.
+                </header><!-- Navigation menu is useful to organize the view of multiple sections inside the article-->
+
+                <nav class="default" id="experiment-article-navigation">
+                    <ul id="experiment-article-navigation-menu">
+                        <!-- The menu can be dynamically generated to contain 
+              the headings of your sections or instead write the 
+              menu items of your choice individually enclosedu in 
+              &lt;li&gt; tag as shown below-->
+                    </ul>
+                </nav><!-- All the sections of your lab or experiment can be 
+          enclosed together with a div element as shown below-->
+
+                <div id="experiment-article-sections">
+                    <!------------------------------- First section of the article---------------------------------->
+
+                    <section id="experiment-article-section-1">
+                        <div class="icon" id="experiment-article-section-1-icon">
+                            <!-- Enclose the icon image of your lab -->
+                            <img src="../images/introduction.jpg"></div>
+                        <!-- The heading for the section can be enclosed in a div tag. -->
+
+                        <div class="heading" id="experiment-article-section-1-heading">
+                            Introduction
+                        </div><!-- Write the section content inside a paragraph element, You can also include images with &lt;img&gt; tag -->
+
+                        <div class="content" id="experiment-article-section-1-content">                            
+                            <p>This experiment enables a student to learn
+                <ul>
+                    <li>understand different types of non-uniform quantization techniques.</li>
+                    <li>Know about the compression and expansion process involved in companding technique.</li>
+                    <li>The principal objective of this experiment is to understand the principle of A-Law and μ-Law Companding techniques.</li>
+                </ul>
+            
+                
+                </p>                            
+                        </div>
+                    </section>
+                    <!-------------------------- Second section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-2">
+                        <div class="icon" id="experiment-article-section-2-icon">
+                            <!-- Enclose the icon image of your lab. -->
+                            <img src="../images/theory.jpg"></div>
+                        <!-- The heading for the section can be enclosed in a div tag. -->
+
+                        <div class="heading" id="experiment-article-section-2-heading">
+                            Theory
+                        </div><!-- Write the section content inside a paragraph element, we can also include images with &lt;img&gt; tag -->
+
+                        <div class="content" id="experiment-article-section-2-content">                            
+                            <p>Companding</p>
+                            <p class="heading-content">In previous experiment we considered an Analog to Digital Converter (ADC) where the quantizer was 
+                                uniformly spaced against amplitude axis. This allows uniform resolution or step size for the entire range of the signal. 
+                                The resulting error or quantization noise is also same for all the amplitude levels. While this appears to be a very 
+                                logical way of quantizing signal if quantization error / noise is perceived uniformly across all amplitude levels, there 
+                                are occasions when it is not actually so. For example, human auditory system follows what can be related to a logarithmic
+                                process in which high amplitude sounds do not require the same resolution as low amplitude sounds. The human ear is more 
+                                sensitive to quantization noise in small amplitude signals than the large ones </p>
+                            <p class="heading-content">  Companding is combination of two terms compressing and expanding. In the context of quantization, 
+                                this refers to compressing the higher amplitude signal first through a non-uniform quantization process and then expanding 
+                                it to get back the signal. To obtain non-uniform quantization a two step process may be followed - first pass the signal 
+                                through a compressor and then compress it by a uniform quantizer (discussed in second experiment).</p>
+                            <p class="heading-content">In speech coding, in an attempt to follow the human auditory system A-law and mu-law companding 
+                                are used. Both apply logarithmic quantization functions to adjust the bit resolution in proportion to the level of the 
+                                input signal. Smaller signals are represented with greater precision or more data bits and larger signals with less data 
+                                bits. The result is fewer bits per sample to maintain an audible signal-to-noise ratio (SNR). Note the term 'audible'.
+                                Audible SNR is the perceived SNR and not actual SNR.</p class="content"><center><img style="width:292px;height:281px;" src="../images/exp3/pic-1.jpg" alt=""/></center></p>
+                            <p class="heading-content">The sampled discrete time signal x(nT) , n=0,1,2,.... of the original continuous time signal x(t)
+                                is shown in Fig. 2 below.</p>
+                            <p class="heading-content">For computational ease, A-law and m-law companding match logarithmic curve with a piece-wise
+                                linear approximation. This first sets eight straight-line segments along the curve to produce a close approximation to 
+                                the logarithm function. Each segment is known as a chord. Within each chord, the piece-wise linear approximation is 
+                                divided into equally size quantization intervals called steps. The step size between adjacent codewords is doubled in 
+                                each succeeding chord. Also encoded is the sign bit for the original integer. The result is an 8-bit logarithmic code 
+                                composed of a 1-bit sign bit, a 3-bit chord, and a 4-bit step.</p>
+                            <p><b>A-Law Compander</b></p>
+                            <p class="heading-content">A-law is the CCITT recommended companding standard that is used across Europe and rest of the 
+                                countries except Japan, Canada and North America. Limiting the linear sample values to 12 magnitude bits, the A-law 
+                                compression is defined by Equation 1, where A is the compression parameter (A=87.7 in Europe), and x is the normalized 
+                                signal to be compressed.
+                            <p style="text-align:center">`y=sgn{((A|x|/(1+ln A),|x|<1/A),(1+ln(A|x|)/(1+ln(A)),1/A<=|x|<=1)) ....(1)`</p class="content"><center><img style="width:300px;height:312px;" src="../images/exp3/pic-2.jpg" alt=""/></center></p>
+                            <p><b>&mu;-Law compander</b></p>
+                            <p class="heading-content">The United States and Japan use m-law companding. In that, the linear sample values are limited 
+                                to 13 magnitude bits, the m-law compression is defined by Equation 2, where &mu; is the compression parameter (&mu; =255 in 
+                                the U.S. and Japan) and x is the normalized signal to be compressed.</p>
+                            <p style="text-align:center">`y=sgn(x)ln(1+mu|x|)/(ln(1+mu)), -1<=x<=1....(2)`</p>
+                            <p class="heading-content">The companding process for m-law is similar to that of A-law. The major differences are: (i) 
+                                &mu;-law encoders typically operate on linear 13-bit magnitude data, as opposed to 12-bit magnitude data with A-law, 
+                                (ii) before chord determination a bias value of 33 is added to the absolute value of the linear input data to simplify 
+                                the chord and step calculations, (iii) the definition of the sign bit is reversed, and (iv) the inversion pattern is 
+                                applied to all bits in the 8-bit code</p>
+                            <p class="content" ><center><img style="width:302px;height:312px;" src="../images/exp3/pic-3.jpg" alt="" />
+                            <p class="heading-content">In this experiment, we use this equation and allow you (the students) to choose number of bits and understand how A-law companding is used in quantization. The aim is to make you understand non-uniform quantization and not the format of the data presentation.</p>
+                        </div>
+                    </section>
+                    <!-------------------------- Third section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-3">
+                        <div class="icon" id="experiment-article-section-3-icon">
+                            <!-- Enclose the icon image of your lab. -->
+                            <img src="../images/objective.jpg"></div>
+
+                        <div class="heading" id="experiment-article-section-3-heading">
+                            procedure
+                        </div>
+
+                        <div class="content" id="experiment-article-section-3-content">                            
+                            <p class="heading-content">1.Click on the <strong><u>Simulation</u></strong>.It will open the workspace.</p>
+                            <p class="heading-content">2.See the movie in experiment page by pressing  <b>help button </b> to understood how the 
+                            following steps are to be executed.
+                            <p>3.Go to the simulation space and select browse blocks</p>
+                            <p class="heading-content">4.Click and Drag the Sinewave signal generator into the virtual workspace. Adjust proper 
+                                amplitude, frequency, and phase of the signal to 6V, 2Hz and 0 respectively. Note that the amplitude of the signal 
+                                varies from 0 to 10 volts. The frequency of the signal varies from 1 to 50 Hz. The phase of the signal varies 
+                                from 0 to 360 degrees</p><center><img src="../images/exp3/fig-1.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">5.Drag and place the ideal sampler and adjust the sampling frequency of the sampler. Note that
+                                the sampling frequency varies from 1 to 100 Hz</p><center><img src="../images/exp3/fig-2.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">6.Similarly drag and place the compressor block, choose &mu;-law compression and set the value to 20.</p><center><img src="../images/exp3/fig-3.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">7.Drag and place the quantization block, set the value to 4.</p><center><img src="../images/exp3/fig-4.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">8.Drag and place the expander and scope into the virtual workspace</p><center><img src="../images/exp3/fig-5.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">9.Connect all blocks one by one as shown in the figure.</p><center><img src="../images/exp3/fig-6.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">10.Connect the scope with all other blocks by just clicking the each wire between two blocks and drag it to the corresponding node on scope.</p><center><img src="../images/exp3/fig-7.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">11.Click on the scope to observe the plots of each signal.</p><center><img src="../images/exp3/fig-8.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">12.Take the readings of Sample no.(n), continuous signal amplitude y(n), compressed signal 
+                                amplitude yc(n), quantised signal amplitude after compression yq(n) and quantized signal amplitude after expansion ye(n)
+                                from the text boxes provided on the scope graph plot. Also calculate the quantization error i.e. e= |y(n) - ye(n)|. This 
+                                will give you the Table (1)</p><center><img src="../images/exp3/fig-9.png" style="height:50%;width:50%;" align="center" /></center>
+                            <p class="heading-content">13.The top graph plot shows the Continous signal y(n) which is in gray colour, sampled 
+                                signal ys(n) which is in green colour, compressed signal yc(n) which is in purple colour and quantised signal after
+                                compression yq which is in yellow colour. Similarly the bottom graph plot shows quantized signal after expansion ye(n) 
+                                which is in white colour and for user convenience again we are showing continuous and sampled signal as well.</p>
+                            <p class="heading-content">14.Repeat the above axperiment with all parameters remain same and change the signal 
+                                frequency f = 3 Hz. Again take the readings for Table (2)..</p>
+                            <p class="heading-content">15.Now for Table (3) Change the Siganl Ferquency to 2 Hz and then 3 Hz and change 
+                                the μ = 80 take the readings for Table (3) and Table (4) respectively</p>
+                            <p class="heading-content">16.Now select the A-Law compression from Compression Property Box and set the value to A=20 and 
+                                take the readings for Table (5) and Table (6) for Signal Frequency f = 2Hz and f = 3Hz respectively.</p>
+                            <p class="heading-content">17.Similarly set the value to A=80 and take the readings for Table (7) and Table (8) for Signal Frequency f = 2Hz 
+                                and f = 3Hz respectively.</p>
+                            <p class="heading-content">18.Click on Report Generation button
+                           <img style="width:127px;height:27px;" src="../images/exp3/report.png" alt="" />
+                                 The reporting window will appear. Here on by clicking Add Table , you 
+                                can add tables. In each tables, by clicking add row will be able to add row.</p>
+                            <p class="heading-content">19.For each table make a screenshot of your plots by taking print screen and edit in any image editor to upload a 
+                                image for each table.</p>
+                            <p class="heading-content">20.Write observation and discuss about erroe (se) for different set of values and compare with the Experiment no. 2 data.
+                                Then click Yes I have finished my Experiment button to submit your report.</p>
+                            <p class="heading-content"><b>Note:</b> if at any time during making circuit if you face any problem please use reset button to 
+                                erase the circuit and draw the circuit freshly.</p>
+                            
+                            
+                        </div>
+                        
+                    </section>
+                    <!-------------------------- Fourth section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-4">
+                        <div class="icon" id="experiment-article-section-4-icon">
+                            <!-- Enclose the icon image of your lab.-->
+                            <img src="../images/simulation.jpg"></div>
+
+                        <div class="heading" id="experiment-article-section-4-heading">
+                            simulator
+                        </div>
+
+                        <div class="content" id="experiment-article-section-4-content">                            
+                            <div align="left">
+                        
+                                        	<img src="../images/img/help.jpg" align="right" style="cursor:pointer;width:30px;height:30px" title="Help" onClick="window.open('help.html','helpWindow','width=760,height=700,screenX=300,screenY=120')" />
+                                        
+                        </div>
+                        
+                    	<div align="center">
+                        
+                          <object width="750" height="700">
+                              <param name="movie" value="expt.swf">
+                              <embed src="expt.swf" width="750" height="700">
+                              </embed>
+                          </object>
+                          
+                        </div>                             
+                        </div>
+                    </section>
+                    <!-------------------------- Fifth section of the article---------------------------------------->
+
+                    
+
+                    <!-------------------------- Sixth section of the article---------------------------------------->
+
+                    
+                    <!-------------------------- Seventh section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-7">
+                        <div class="icon" id="experiment-article-section-7-icon">
+                            <!-- Enclose the icon image of your lab.-->
+                            <img src="../images/quizzes.jpg"></div>
+
+                        <div class="heading" id="experiment-article-section-7-heading">
+                            Quizzes
+                        </div>
+
+                        <div class="content" id="experiment-article-section-7-content">                            
+                            <p>Quizzes content.....</p>                           
+                        </div>
+                    </section>
+                    <!-------------------------- Eight section of the article---------------------------------------->
+
+                    <section id="experiment-article-section-8">
+                        <div class="icon" id="experiment-article-section-8-icon">
+                            <!-- Enclose the icon image of your lab.-->
+                            <img src="../images/reference.jpg"></div>
+
+                        <div class="heading" id="experiment-article-section-8-heading">
+                            Reference
+                        </div>
+                        
+                        <div class="content" id="experiment-article-section-8-content">                            
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    </section>                   
+
+                </div>
+            </article>
+        </div>
+    </body>
+</html>
